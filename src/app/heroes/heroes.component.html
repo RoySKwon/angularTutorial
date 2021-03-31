@@ -10,6 +10,14 @@
         </a>
     </li>
 </ul>
+<div>
+    <label>Hero Name:</label>
+    <input #heroName />
+    <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+        ADD
+    </button>
+</div>
+
 
 <!-- <h6>Hero Detail Componet--------</h6> -->
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
