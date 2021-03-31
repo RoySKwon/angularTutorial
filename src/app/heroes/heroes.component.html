@@ -1,24 +1,40 @@
-<h6>Heroes Component----------</h6>
 <h2>My Heroes</h2>
-<ul class="heroes">
-    <li *ngFor="let hero of heroes">
-        <a routerLink="/detail/{{hero.id}}">
-            <span class="badge">
-                {{hero.id}}
-            </span>
-            {{hero.name}}
-        </a>
-    </li>
-</ul>
-<div>
-    <label>Hero Name:</label>
-    <input #heroName />
-    <button class="add-button" (click)="add(heroName.value); heroName.value=''">
-        ADD
-    </button>
+
+<div *ngIf="heroes.length">
+    <div>
+        <label>Hero Name:</label>
+        <input #heroName />
+        <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+            ADD
+        </button>
+    </div>
+
+    <ul class="heroes">
+        <li *ngFor="let hero of heroes">
+            <a routerLink="/detail/{{hero.id}}">
+                <span class="badge">
+                    {{hero.id}}
+                </span>
+                {{hero.name}}
+            </a>
+            <button class="delete" title="delete hero" (click)="delete(hero)">
+                X
+            </button>
+        </li>
+    </ul>
 </div>
 
+<div *ngIf="!heroes.length">
+    <h2>I WANT YOU for Hero</h2>
 
+    <div>
+        <label>Your Name:</label>
+        <input #heroName />
+        <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+            JOIN
+        </button>
+    </div>
+</div>
 <!-- <h6>Hero Detail Componet--------</h6> -->
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 

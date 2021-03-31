@@ -39,11 +39,14 @@ export class HeroesComponent implements OnInit {
   
   ngOnInit(): void {
     console.log("app-heroes: ngOnInit");
-    this.getHeroes();// 좋은 구조 GOOD
+    // this.getHeroes();// 좋은 구조 GOOD
+    this.readHeroes();
   }
 
+  //1. Read HERO
   // Heroes list 받아오는 Method
-  getHeroes(): void{
+  // getHeroes(): void{
+  readHeroes(): void{
     //Sync, 바로 Hero[] 타입을 받아온다.
     // this.heroes = this.heroService.tradeHeroes();
   
@@ -52,6 +55,7 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes);
   }
 
+  //2. Add Heroe
   add(name: string): void{
     name = name.trim();
     
@@ -64,7 +68,14 @@ export class HeroesComponent implements OnInit {
         this.heroes.push(hero);
       });
   }
-  
+
+//3. Delete Hero
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
+
+
 /*   
   private checklog(hero){
     console.log(`I'm hier:${hero.name} `);

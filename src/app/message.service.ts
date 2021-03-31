@@ -11,12 +11,12 @@ export class MessageService {
 
   addMessage(message: string){
     this.messages.push(message);
-    console.log(`POINT: ${message}`);
+    // console.log(`POINT: ${message}`);
   }
 
   clearMessage(){
     this.messages = [];
-    console.log(`POINT: ${this.messages}`);
+    // console.log(`POINT: ${this.messages}`);
   }  
   constructor() { }
 }

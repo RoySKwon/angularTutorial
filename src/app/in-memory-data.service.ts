@@ -17,47 +17,47 @@ export class InMemoryDataService implements InMemoryDbService{
     
         { 
             id: 12, 
-            name: 'Wonderwoman' 
+            name: 'WonderFrau' 
         },
     
         { 
             id: 13, 
-            name: 'Batman' 
+            name: 'BatHerr' 
         },
         
         { 
             id: 14, 
-            name: 'Flash'
+            name: 'Blitz'
         },
     
         { 
             id: 15, 
-            name: 'Robin' 
+            name: 'Robinson' 
         },
     
         { 
           id: 16, 
-            name: 'Batwoman' 
+            name: 'Batjungs' 
         },
     
         { 
             id: 17, 
-            name: 'Batgirl'  
+            name: 'Batkinder'  
         },
     
         { 
             id: 18, 
-            name: 'Shazam' 
+            name: 'Schamann' 
         },
     
         { 
             id: 19, 
-            name: 'Aquaman' 
+            name: 'Aqualeute' 
         },
     
         { 
             id: 20, 
-            name: 'Greenlantern' 
+            name: 'Greenlampe' 
         },
     ];
     return {heroes}
