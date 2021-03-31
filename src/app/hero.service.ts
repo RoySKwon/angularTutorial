@@ -48,10 +48,20 @@ export class HeroService {
       );
   }
 
-  getHeroe(id: number): Observable<Hero>{
+  /* 
+  getHero(id: number): Observable<Hero>{
     this.messageService.addMessage(`HeroService: fetched hero id=${id}`);
     return of(HEROES.find(hero => hero.id === id));
   }
+ */
+//id에 해당하는 Hero data get. if 없다면 404 return 
+getHero(id: number): Observable<Hero> {
+  const url = `${this.heroesUrl}/${id}`;
+  return this.http.get<Hero>(url).pipe(
+    tap(_ => this.log(`fetched hero id=${id}`)),
+    catchError(this.handleError<Hero>(`getHero id=${id}`))
+  );
+}
 
   private handleError<T>(operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
@@ -67,7 +77,25 @@ export class HeroService {
     };
   }
 
-  
+/*   
+  httpOptions = {
+    headers: new HttpHeaders({ 'content-Type': 'application/json'})
+  };
+ */
+
+  //Search
+searchHeroes(term: string): Observable<Hero[]> {
+  if (!term.trim()) {
+    return of([]);
+  }
+  return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+    tap(x => x.length ?
+       this.log(`found heroes matching "${term}"`) :
+       this.log(`no heroes matching "${term}"`)),
+    catchError(this.handleError<Hero[]>('searchHeroes', []))
+  );
+}
+
   private log(message: string){
     this.messageService.addMessage('HeroService: ${message}');
   }
