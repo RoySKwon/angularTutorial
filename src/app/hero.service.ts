@@ -95,6 +95,20 @@ searchHeroes(term: string): Observable<Hero[]> {
     catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
 }
+//CRUD( Create, Read, Update, Delete)
+//SQL (Insert, Select, Update, Delete)
+
+//1. Update (SAVE)
+updateHero(hero: Hero): Observable<any>{
+  return this.http.put(this.heroesUrl, hero,this.httpOptions).pipe(
+    tap(_=> this.log(`update hero id = ${hero.id}`)),
+    catchError(this.handleError<any>('updateHero'))
+  );
+}
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type':'application/json'})
+  };
 
   private log(message: string){
     this.messageService.addMessage('HeroService: ${message}');
