@@ -1,6 +1,6 @@
 # Angular Tutorial Practice Repository
 ## TourOfHeroes
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10
 ## Description
 This repository is designed for practicing and mastering Angular. It includes tutorials, examples, and exercises to help you build performant and scalable applications using the Angular framework.
 This project was generated with Angular CLI version 10.
